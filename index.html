@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratheek Pandesha - Academic Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html[data-theme="light"] {
+            --bg-color: #fff;
+            --text-color: #333;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --nav-bg: #f8f9fa;
+            --nav-hover: #e9ecef;
+            --border-color: #eee;
+            --card-bg: #fff;
+            --card-shadow: rgba(0,0,0,0.05);
+            --card-hover-shadow: rgba(0,0,0,0.15);
+            --section-bg: #f8f9fa;
+            --accent-color: #667eea;
+            --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        html[data-theme="dark"] {
+            --bg-color: #0f0f0f;
+            --text-color: #e0e0e0;
+            --header-bg: rgba(30, 30, 30, 0.95);
+            --nav-bg: #1a1a1a;
+            --nav-hover: #2d2d2d;
+            --border-color: #333;
+            --card-bg: #1a1a1a;
+            --card-shadow: rgba(0,0,0,0.3);
+            --card-hover-shadow: rgba(102, 126, 234, 0.3);
+            --section-bg: #1a1a1a;
+            --link-color: #a78bfa;
+            --accent-color: #a78bfa;
+            --accent-gradient: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+        }
+
+        body {
+            font-family: "Fira Code", monospace;
+            font-weight: 400;
+            line-height: 1.75;
+            color: var(--text-color);
+            background: var(--bg-color);
+            text-rendering: optimizeLegibility;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: "Fira Code", monospace;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px var(--card-shadow);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            padding: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--text-color);
+        }
+
+        .sun-icon {
+            display: none;
+        }
+
+        .moon-icon {
+            display: block;
+        }
+
+        html[data-theme="dark"] .sun-icon {
+            display: block;
+        }
+
+        html[data-theme="dark"] .moon-icon {
+            display: none;
+        }
+
+        .logo h1 {
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .x-link {
+            font-size: 2rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .x-link:hover {
+            transform: scale(1.1);
+            color: var(--accent-color);
+        }
+
+        nav {
+            background: transparent;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2.5rem;
+            overflow-x: auto;
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            padding: 0.5rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: transparent;
+            border: none;
+            white-space: nowrap;
+            font-weight: 400;
+            font-size: 1rem;
+            color: var(--text-color);
+            opacity: 0.7;
+            position: relative;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-tab:hover {
+            opacity: 1;
+        }
+
+        .nav-tab.active {
+            opacity: 1;
+            font-weight: 500;
+            border-bottom: 2px solid var(--text-color);
+        }
+
+        main {
+            min-height: calc(100vh - 140px);
+            padding: 3rem 0;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-section {
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .profile-photo {
+            flex-shrink: 0;
+        }
+
+        .photo-placeholder {
+            width: 250px;
+            height: 300px;
+            background: var(--section-bg);
+            border: 2px dashed var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .photo-placeholder:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--card-hover-shadow);
+            border-color: var(--accent-color);
+        }
+
+        .photo-placeholder span {
+            color: #999;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .photo-placeholder small {
+            color: #666;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .coffee-btn {
+            display: inline-block;
+            background: #D4C49A;
+            color: #333;
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid #C4B48A;
+            width: 100%;
+            text-align: center;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .coffee-btn:hover {
+            transform: translateY(-2px);
+            background: #FFDD00 !important;
+            border-color: #FFDD00 !important;
+            color: #000 !important;
+            box-shadow: 0 6px 20px rgba(255, 221, 0, 0.5);
+        }
+
+        .chess-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #9BB383;
+            color: #333;
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid #8BA373;
+            width: 100%;
+            text-align: center;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .chess-btn:hover {
+            transform: translateY(-2px);
+            background: #7FA650 !important;
+            border-color: #7FA650 !important;
+            color: #fff !important;
+            box-shadow: 0 6px 20px rgba(127, 166, 80, 0.5);
+        }
+
+        .chess-icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 0.2rem;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            max-width: 250px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            text-decoration: none;
+            color: #999;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .social-link:hover {
+            color: #1DA1F2;
+            transform: translateY(-2px);
+            background: var(--nav-hover);
+        }
+
+        .social-link[href*="mailto"]:hover {
+            color: #333;
+        }
+
+        html[data-theme="dark"] .social-link[href*="mailto"]:hover {
+            color: #e0e0e0;
+        }
+
+        .social-link[href*="orcid"]:hover {
+            color: #A6CE39;
+        }
+
+        .social-link[href*="linkedin"]:hover {
+            color: #0A66C2;
+        }
+
+        .social-link[href*="scholar"]:hover {
+            color: #4285F4;
+        }
+
+        .social-link[href*="bsky"]:hover {
+            color: #1185FE;
+        }
+
+        .social-link[href*="twitter"]:hover {
+            color: #1DA1F2;
+        }
+
+        html[data-theme="dark"] .social-link {
+            color: #666;
+        }
+
+        .bio {
+            flex: 1;
+        }
+
+        .bio h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            font-weight: 700;
+        }
+
+        .bio p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        .research-area {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 20px var(--card-shadow);
+            transition: all 0.3s ease;
+            opacity: 1 !important;
+        }
+
+        .research-area:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--card-hover-shadow);
+        }
+
+        .research-area h3 {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+
+        .research-area h4 {
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .research-area p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .publication {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 20px var(--card-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .publication::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #FF6B35;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .publication:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--card-hover-shadow);
+        }
+
+        .publication:hover::before {
+            opacity: 1;
+        }
+
+        .publication h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-size: 1.15rem;
+            line-height: 1.5;
+        }
+
+        .authors {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        html[data-theme="dark"] .authors {
+            color: #999;
+        }
+
+        .journal {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .journal a {
+            color: #FF6B35;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .journal a:hover {
+            opacity: 0.7;
+        }
+
+        .academic-links {
+            margin-top: 1rem;
+        }
+
+        .academic-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--accent-color);
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .academic-links a:hover {
+            background: var(--accent-color);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--accent-gradient);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            width: 100%;
+            opacity: 0;
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(7) { animation-delay: 0.7s; }
+        .timeline-item:nth-child(8) { animation-delay: 0.8s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+            padding-right: 3rem;
+            width: 50%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+            padding-left: 3rem;
+            width: 50%;
+            text-align: left;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--card-shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px var(--card-hover-shadow);
+        }
+
+        .timeline-year {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .timeline-content h4 {
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        html[data-theme="dark"] .timeline-content h4 {
+            color: #999;
+        }
+
+        .timeline-content p {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            border: 3px solid var(--bg-color);
+            z-index: 1;
+            box-shadow: 0 0 0 0 var(--accent-color);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 var(--accent-color);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
+            }
+        }
+
+        .typewriter {
+            display: inline;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background: var(--text-color);
+            margin-left: 3px;
+            animation: blink 0.7s infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        h2 {
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: var(--text-color);
+            font-weight: 700;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 5px 20px var(--card-shadow);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--card-hover-shadow);
+        }
+
+        .back-to-top.show {
+            display: flex;
+        }
+
+        footer {
+            background: var(--nav-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        html[data-theme="dark"] footer p {
+            color: #999;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .nav-tabs {
+                gap: 1rem;
+                justify-content: center;
+            }
+            
+            .nav-tab {
+                padding: 0.5rem 0;
+                font-size: 0.9rem;
+            }
+
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+
+            .header-right {
+                gap: 0.5rem;
+            }
+
+            .x-link {
+                font-size: 1.5rem;
+            }
+            
+            .about-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .photo-placeholder {
+                margin: 0 auto 1rem;
+            }
+
+            .social-links {
+                margin: 1rem auto;
+            }
+
+            .bio h2 {
+                font-size: 2rem;
+            }
+
+            .bio p {
+                font-size: 1rem;
+                text-align: left;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                width: 100%;
+                padding-left: 3rem;
+                padding-right: 1rem;
+                margin-left: 0;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><span id="typewriter"></span><span class="cursor" id="cursor"></span></h1>
+                </div>
+                <div class="header-right">
+                    <button class="theme-toggle" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                    <a href="https://twitter.com/HPratheek" class="x-link" target="_blank">𝕏</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul class="nav-tabs">
+                <li class="nav-tab active" data-tab="about">About Me</li>
+                <li class="nav-tab" data-tab="research">Research</li>
+                <li class="nav-tab" data-tab="publications">Publications</li>
+                <li class="nav-tab" data-tab="timeline">Timeline</li>
+                <li class="nav-tab" data-tab="resume">Resume</li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="tab-content active" id="about">
+                <div class="about-section">
+                    <div class="profile-photo">
+                        <div class="photo-placeholder">
+                            <img src="./assets/profile-photo.jpg" alt="Pratheek Pandesha">
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="mailto:p.h.pandesha@wustl.edu" class="social-link" title="Email">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                </svg>
+                            </a>
+                            <a href="https://orcid.org/0000-0001-9679-9141" class="social-link" target="_blank" title="ORCID">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 8.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v6.169H6.647v-6.169zm3.562 0h3.9c1.769 0 2.813 1.031 2.813 2.709 0 1.678-1.044 2.709-2.813 2.709h-2.456v.751h-1.444v-6.169zm1.444 1.303v2.812h2.1c.985 0 1.5-.525 1.5-1.406s-.515-1.406-1.5-1.406h-2.1z"/>
+                                </svg>
+                            </a>
+                            <a href="https://scholar.google.com/citations?user=zrt7al8AAAAJ" class="social-link" target="_blank" title="Google Scholar">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/pratheekhp" class="social-link" target="_blank" title="LinkedIn">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </a>
+                            <a href="https://bsky.app/profile/hadse.bsky.social" class="social-link" target="_blank" title="Bluesky">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.038.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.018.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.206-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/>
+                                </svg>
+                            </a>
+                            <a href="https://twitter.com/HPratheek" class="social-link" target="_blank" title="Twitter">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        
+                        <a href="https://link.chess.com/play/4bm9Y0" class="chess-btn" target="_blank">
+                            <svg class="chess-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 3h18v18H3z"/>
+                                <path d="M3 9h18M3 15h18M9 3v18M15 3v18" stroke-width="1"/>
+                                <circle cx="12" cy="6" r="1.5" fill="currentColor"/>
+                            </svg>
+                            Play chess with me!
+                        </a>
+                        
+                        <a href="https://www.buymeacoffee.com/pratheekhp" class="coffee-btn" target="_blank">
+                            ☕ Buy me a coffee
+                        </a>
+                    </div>
+                    <div class="bio">
+                        <h2>About Me</h2>
+                        <p>I am a Ph.D. Candidate and William H. Danforth Plant Sciences Fellow at the <a href="https://dbbs.wustl.edu" target="_blank">DBBS, Washington University in St. Louis</a> and <a href="https://danforthcenter.org" target="_blank">Donald Danforth Plant Science Center</a> working with <a href="https://slotkinlab.github.io/" target="_blank">Dr. R. Keith Slotkin</a>. My research focuses on understanding the fundamental difference between elements in the genome that need to be "silenced" (transposons) versus ones that need to be kept active (genes), this differentiation forms the basis of genome integrity. My goal is to identify and elucidate the biogenesis of primary small RNAs that initiate RNAi and subsequent epigenetic silencing of transgenes, viruses and transposons.</p>
+                        
+                        <p>Previously, I had the privilege of being a <a href="https://iusstf.org/khorana-program-for-scholars" target="_blank">Khorana Scholar</a> at MIT, working with <a href="https://www.gehringplantlab.org/" target="_blank">Dr. Mary Gehring</a> on pathways regulating genome dosage sensitivity in the endosperm of Arabidopsis, which inspired me to further my research in plant epigenetics. Prior to grad school, I also had a short industry stint as a Competitive Intelligence Analyst at Bayer Crop Science, where I worked on Science Competitive Intelligence & Prospecting in the gene editing space.</p>
+                        
+                        <p>I received my M.Sc. in Plant Physiology and Biochemistry (Gold Medal) from <a href="https://www.iari.res.in/" target="_blank">Indian Agricultural Research Institute, New Delhi</a>, and my B.Sc. in Agriculture Biotechnology from <a href="https://www.uasbangalore.edu.in/" target="_blank">University of Agricultural Sciences, Bangalore</a>. Throughout my undergraduate period, I worked on annotation of a Domain of Unknown Function (DUF) protein specific to plants with <a href="https://www.ncbs.res.in/faculty/mini" target="_blank">Prof. Sowdhamini Ramanathan</a> and <a href="https://www.iari.res.in/sci_db/sci_details.php?scid=Q1A0QTFmUEFEYU9jczdpRGJEL0tLZz09" target="_blank">Dr. Viswanathan Chinnusamy</a>.</p>
+                        
+                        <p>I'm also part of the <a href="https://ngsf.in" target="_blank">Next Gen Scientists Foundation (NGSF)</a>, where we strive to make science accessible to undergraduates in India who lack access to research laboratories. We follow a unique student-funded model to support internships at top research institutions across India.</p>
+                        
+                        <div class="academic-links">
+                            <a href="./assets/Pratheek_Pandesha_CV_Jan_24_2025.pdf">CV/Resume</a>
+                        </div>
+                        
+                        <p style="margin-top: 1.5rem;">My current research interests include:</p>
+                        <ul style="margin-left: 2rem; margin-top: 1rem;">
+                            <li>Fundamental understanding of initiation of epigenetic silencing mechanisms</li>
+                            <li>Understanding regulation of transposons in the genome and the use of transposons for genome engineering</li>
+                            <li>CRISPR-based genome engineering in plants, especially large-scale genome tweaking and its applications</li>
+                            <li>I'm very excited and optimistic about the possibilities of AI-assisted engineering of biology and biological processes, especially synthesizing novel genomes and proteins!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="research">
+                <h2>Research Areas</h2>
+                
+                <div class="research-area scroll-fade">
+                    <h3>Initiation of Silencing</h3>
+                    
+                    <h4 style="margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.2rem;">The Central Question</h4>
+                    <p>A fundamental question in biology is how cells distinguish self from non-self genetic elements. How do sophisticated silencing pathways selectively target non-self elements like viruses and transgenes while sparing endogenous genes? Complicating this further are transposable elements (TEs) - intrinsic genomic parasites that must be silenced despite being part of the organism's own DNA, as their mobilization can disrupt genes and genome function.</p>
+                    
+                    <div style="background: var(--section-bg); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0; border: 2px dashed var(--border-color); text-align: center;">
+                        <img src="./assets/figure-1-self-nonself.jpg" alt="Self vs Non-self Recognition Diagram" style="max-width: 100%; height: auto; border-radius: 8px;">
+                    </div>
+                    
+                    <h4 style="margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.2rem;">DNA Methylation and the RdDM Pathway</h4>
+                    
+                    <div style="display: flex; gap: 2rem; align-items: flex-start; margin: 1.5rem 0;">
+                        <div style="flex-shrink: 0; width: 300px;">
+                            <div style="background: var(--section-bg); padding: 1rem; border-radius: 10px; border: 2px dashed var(--border-color); text-align: center; height: 100%;">
+                                <img src="./assets/figure-2-rddm-pathway.jpg" alt="RdDM Pathway Diagram" style="max-width: 100%; height: auto; border-radius: 8px;">
+                            </div>
+                        </div>
+                        <div style="flex: 1;">
+                            <p style="margin: 0;">DNA methylation acts like molecular icing on a cake, adding an epigenetic layer that dictates which genomic regions are expressed and which remain silent by regulating chromatin structure and accessibility. In plants, RNA-directed DNA Methylation (RdDM) deposits methylation marks <em>de novo</em>. While we understand the RdDM mechanism well, a critical gap remains: <strong>what triggers this pathway for the very first time?</strong> Studies suggest small RNAs from the RNAi (RNA Interference) feed-forward cycle initiate the process, but the identity of the original trigger remains elusive across all biological systems.</p>
+                        </div>
+                    </div>
+                    
+                    <p><strong>My research focuses on identifying these elusive "primary small RNAs" that initiate the RNAi feed-forward cycle, establishing DNA methylation and long-term chromatin modifications that lead to stable epigenetic silencing.</strong></p>
+                    
+                    <div style="display: flex; gap: 2rem; align-items: flex-start; margin: 1.5rem 0;">
+                        <div style="flex: 1;">
+                            <h4 style="margin-top: 0; margin-bottom: 1rem; font-size: 1.1rem;">My Approach</h4>
+                            <p style="margin: 0;">I use genetics, genomics, and biochemical techniques to answer what primary small RNAs are and how they are generated. I created <em>Arabidopsis</em> plants that are null mutants for genes encoding RNA Dependent RNA Polymerases, which act as amplifiers of primary small RNA signals and generate multiple copies of secondary small RNAs, making it difficult to identify and characterize the primary small RNAs that trigger RNAi. I also collaborate with data scientists in the lab to use machine learning approaches to identify aberrant and antisense transcripts that could generate primary small RNAs.</p>
+                        </div>
+                        <div style="flex-shrink: 0; width: 300px;">
+                            <div style="background: var(--section-bg); padding: 1rem; border-radius: 10px; border: 2px dashed var(--border-color); text-align: center; height: 100%;">
+                                <img src="./assets/figure-rdrp-structure.jpg" alt="RNA Dependent RNA Polymerase Structure" style="max-width: 100%; height: auto; border-radius: 8px;">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4 style="margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.2rem;">Why <em>Arabidopsis</em>?</h4>
+                    <p>I use <em>Arabidopsis thaliana</em> because it's exceptionally suited for genetic manipulation and has vast resources of mutants and genomic information. Since my work relies heavily on genetic approaches, <em>Arabidopsis</em> can survive more severe genetic alterations compared to other models. The findings also translate well to crops, helping tackle transgene silencing that causes significant economic losses to farmers and industry. Plus, plants are a fantastic system to study transposons - they were first discovered in corn by Barbara McClintock in the 1940s.</p>
+                    
+                    <div style="background: var(--section-bg); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0; border: 2px dashed var(--border-color); text-align: center;">
+                        <img src="./assets/figure-3-arabidopsis.jpg" alt="Why Arabidopsis thaliana as a model system" style="max-width: 100%; height: auto; border-radius: 8px;">
+                    </div>
+                </div>
+                
+                <div class="research-area scroll-fade">
+                    <h3>Genome Engineering and Technology Development</h3>
+                    
+                    <div style="display: flex; gap: 2rem; align-items: flex-start; margin: 1.5rem 0;">
+                        <div style="flex: 1;">
+                            <p style="margin: 0 0 1rem 0;">CRISPR has become my go-to tool for generating mutants in Arabidopsis—whether single mutants or complex combinations. During the early years of my PhD, I was lucky to be part of the team developing transposase-assisted target-site integration, which ended up being published in Nature (pretty cool!).</p>
+                            
+                            <p style="margin: 0 0 1rem 0;">These days, I'm constantly experimenting with different transformation techniques—protoplast transformation, transient transformation of Arabidopsis seedlings—basically whatever works best to develop high-throughput screening tools for genome editing outcomes.</p>
+                            
+                            <p style="margin: 0;">During my graduate school rotations, I also got to play around with targeted methylation using CRISPR/SunTag systems for epigenome engineering, with the goal of engineering viral disease resistance in plants.</p>
+                        </div>
+                        <div style="flex-shrink: 0; width: 300px;">
+                            <div style="background: var(--section-bg); padding: 1rem; border-radius: 10px; border: 2px dashed var(--border-color); text-align: center; height: 250px; display: flex; align-items: center; justify-content: center;">
+                                <img src="./assets/figure-crispr.jpg" alt="CRISPR Genome Engineering" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="research-area scroll-fade">
+                    <h3>Annotation of Domain of Unknown Function Proteins (DUFs)</h3>
+                    
+                    <div style="display: flex; gap: 2rem; align-items: flex-start; margin: 1.5rem 0;">
+                        <div style="flex-shrink: 0; width: 300px;">
+                            <div style="background: var(--section-bg); padding: 1rem; border-radius: 10px; border: 2px dashed var(--border-color); text-align: center; height: 250px; display: flex; align-items: center; justify-content: center;">
+                                <img src="./assets/figure-duf1645.jpg" alt="DUF1645 Protein Structure" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px;">
+                            </div>
+                        </div>
+                        <div style="flex: 1;">
+                            <p style="margin: 0 0 1rem 0;">During my undergraduate and master's research, I investigated the role of DUF1645 proteins in multiple stress tolerance and grain yield in rice. Our work revealed DUF1645 as a novel intrinsically disordered transcription factor family specific to plants, contributing to our understanding of plant stress responses at the molecular level.</p>
+                            
+                            <p style="margin: 0 0 1rem 0;">I used various computational tools and publicly available transcriptome data extensively to annotate the DUF1645 protein family. I was fortunate to work with multiple protein structure prediction tools prior to AlphaFold during my undergraduate research, and then validate my computational findings through wet-lab experiments during my master's thesis work.</p>
+                            
+                            <p style="margin: 0;">Intrinsically disordered proteins continue to capture my attention and interest, and I hope to return to studying them in the future!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="publications">
+                <h2>Publications</h2>
+                
+                <div class="publication scroll-fade">
+                    <h4>A transposable element insertion in <i>AUX/IAA16</i> disrupts splicing and causes auxin resistance in <i>Bassia scoparia</i></h4>
+                    <div class="authors">Montgomery, J.S., Soni, N., Hill, S.M., Morran, S., Patterson, E.L., Edwards, S.A., Ratnayake, S., Hung, Y.H., Pandesha, P.H., Slotkin, R.K., Napier, R., Dayan, F., Gaines, T.</div>
+                    <div class="journal"><a href="https://doi.org/10.1111/tpj.70339" target="_blank">The Plant Journal, 2025</a></div>
+                </div>
+                
+                <div class="publication scroll-fade">
+                    <h4>Transposase-assisted target-site integration for efficient plant genome engineering</h4>
+                    <div class="authors">Liu, P., Panda, K., Edwards, S.A., Swanson, R., Yi, H., Pandesha, P., Hung, Y.H., Klaas, G., Ye, X., Collins, M.V. and Renken, K.N.</div>
+                    <div class="journal"><a href="https://www.nature.com/articles/s41586-024-07613-8" target="_blank">Nature, 2024, 631(8021), pp.593-600</a></div>
+                </div>
+                
+                <div class="publication scroll-fade">
+                    <h4>Nitrate supply regulates tissue calcium abundance and transcript level of Calcineurin B-like (CBL) gene family in wheat</h4>
+                    <div class="authors">Adavi B S, Pandesha PH, B J, Jha SK, Chinnusamy V, Sathee L.</div>
+                    <div class="journal"><a href="https://doi.org/10.1016/j.plaphy.2023.107724" target="_blank">Plant Physiology and Biochemistry, 2023, 199:107724</a></div>
+                </div>
+                
+                <div class="publication scroll-fade">
+                    <h4>Photosynthetic machinery under salinity stress: Trepidations and adaptive mechanisms</h4>
+                    <div class="authors">Vineeth TV, Krishna GK, Pandesha PH, Sathee L, Thomas S, James D, Ravikiran KT, Taria S, John C, Vinaykumar NM, Lokeshkumar BM.</div>
+                    <div class="journal"><a href="https://doi.org/10.32615/ps.2023.007" target="_blank">Photosynthetica, 2023, 61(1):73-93</a></div>
+                </div>
+                
+                <div class="publication scroll-fade">
+                    <h4>Genome Editing Targets for Improving Nutrient Use Efficiency and Nutrient Stress Adaptation</h4>
+                    <div class="authors">Sathee L, Jagadhesan B, Pandesha PH, Barman D, Adavi B S, Nagar S, Krishna GK, Tripathi S, Jha SK, Chinnusamy V.</div>
+                    <div class="journal"><a href="https://doi.org/10.3389/fgene.2022.900897" target="_blank">Frontiers in Genetics, 2022, 13:900897</a></div>
+                </div>
+                
+                <div class="publication scroll-fade">
+                    <h4>Functional annotation of hypothetical proteins involved in multiple stress response in Oryza sativa</h4>
+                    <div class="authors">Pandesha PH, Nagar S, Advani S, Chinnusamy V, Pandey R.</div>
+                    <div class="journal"><a href="https://epubs.icar.org.in/index.php/IJAgS/article/view/116378" target="_blank">Indian Journal of Agricultural Sciences, 2021, 91(7)</a></div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="timeline">
+                <h2 style="text-align: center;">My Academic Journey</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2021 - Present</div>
+                            <h3>Ph.D. Candidate</h3>
+                            <h4>Washington University & Donald Danforth Plant Science Center, St. Louis</h4>
+                            <p><strong>William H. Danforth Plant Sciences Fellow</strong></p>
+                            <p>Advisor: R. Keith Slotkin</p>
+                            <p>Thesis: Primary small RNAs that initiate epigenetic silencing in Arabidopsis</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2020 - 2021</div>
+                            <h3>Competitive Intelligence Analyst</h3>
+                            <h4>Bayer Crop Science</h4>
+                            <p>Science Competitive Intelligence & Prospecting</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2019 - 2020</div>
+                            <h3>Khorana Scholar</h3>
+                            <h4>Massachusetts Institute of Technology (MIT), Cambridge, USA</h4>
+                            <p>Dept. of Biology & Whitehead Institute for Biomedical Research</p>
+                            <p>Advisor: Mary Gehring</p>
+                            <p>Project: Pathways regulating genome dosage sensitivity in the endosperm of Arabidopsis</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2018 - 2020</div>
+                            <h3>M.Sc. in Plant Physiology</h3>
+                            <h4>Indian Agricultural Research Institute, New Delhi</h4>
+                            <p><strong>Gold Medal</strong></p>
+                            <p>Advisor: Viswanathan Chinnusamy</p>
+                            <p>Thesis: Investigating the role of DUF1645 proteins in abiotic stress tolerance and grain yield in rice</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2017 - 2018</div>
+                            <h3>Bachelor's Dissertation</h3>
+                            <h4>National Centre for Biological Sciences (NCBS), Bangalore</h4>
+                            <p>Advisor: R. Sowdhamini</p>
+                            <p>Thesis: Structural and functional annotation of multiple stress responsive hypothetical proteins in rice</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2017</div>
+                            <h3>JNCASR Summer Research Fellow</h3>
+                            <h4>Centre for Cellular and Molecular Biology (CCMB), Hyderabad</h4>
+                            <p>Advisor: Imran Siddiqi</p>
+                            <p>Project: Development of fluorescent tag-based cell cycle marker system in Arabidopsis</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2016</div>
+                            <h3>Indian Academy of Sciences Summer Research Fellow</h3>
+                            <h4>University of Delhi (South Campus), New Delhi</h4>
+                            <p>Advisor: Surekha Agarwal</p>
+                            <p>Project: Identified and cloned a tetraspanin gene from Oryza sativa</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">2014 - 2018</div>
+                            <h3>B.Sc. Agriculture Biotechnology</h3>
+                            <h4>University of Agricultural Sciences, Bangalore</h4>
+                            <p>Merit Scholarship recipient</p>
+                            <p>Thesis: Structural and functional annotation of multiple stress responsive hypothetical proteins in rice</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="resume">
+                <div style="width: 100%; height: 100vh; border: 1px solid var(--border-color); border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px var(--card-shadow);">
+                    <iframe 
+                        src="./assets/Pratheek_Pandesha_CV_Jan_24_2025.pdf" 
+                        width="100%" 
+                        height="100%" 
+                        style="border: none;">
+                        <p>Your browser does not support PDFs. <a href="./assets/Pratheek_Pandesha_CV_Jan_24_2025.pdf" download>Download the PDF</a> instead.</p>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Pratheek Pandesha. All rights reserved.</p>
+            <p>Last updated: October 2025</p>
+            <div class="footer-links">
+                <a href="mailto:p.h.pandesha@wustl.edu">Email</a>
+                <a href="https://scholar.google.com/citations?user=zrt7al8AAAAJ" target="_blank">Google Scholar</a>
+                <a href="https://twitter.com/HPratheek" target="_blank">Twitter</a>
+                <a href="https://www.linkedin.com/in/pratheekhp" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function typeWriter() {
+            const text = "Hi, I'm Pratheek Pandesha";
+            const typewriterElement = document.getElementById('typewriter');
+            const cursorElement = document.getElementById('cursor');
+            
+            if (!typewriterElement || !cursorElement) return;
+            
+            let index = 0;
+            typewriterElement.textContent = '';
+            cursorElement.style.display = 'inline-block';
+            
+            function type() {
+                if (index < text.length) {
+                    typewriterElement.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(type, 80);
+                } else {
+                    setTimeout(() => {
+                        cursorElement.style.display = 'none';
+                    }, 500);
+                }
+            }
+            
+            setTimeout(type, 300);
+        }
+        
+        window.addEventListener('DOMContentLoaded', typeWriter);
+
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            typeWriter();
+        });
+
+        const tabs = document.querySelectorAll('.nav-tab');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+                
+                tab.classList.add('active');
+                const targetTab = tab.getAttribute('data-tab');
+                document.getElementById(targetTab).classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const fadeElements = document.querySelectorAll('.scroll-fade');
+        fadeElements.forEach(el => observer.observe(el));
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                setTimeout(() => {
+                    const newFadeElements = document.querySelectorAll('.tab-content.active .scroll-fade');
+                    newFadeElements.forEach(el => {
+                        el.classList.remove('visible');
+                        observer.observe(el);
+                    });
+                }, 100);
+            });
+        });
+
+        function updateFadeOnScroll() {
+            const viewportCenter = window.innerHeight / 2 + window.scrollY;
+            const fadeDistance = window.innerHeight * 0.6;
+            
+            const elementsToFade = document.querySelectorAll('.publication, .timeline-item');
+            
+            elementsToFade.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const elementCenter = rect.top + window.scrollY + rect.height / 2;
+                const distance = Math.abs(viewportCenter - elementCenter);
+                
+                let opacity = 1 - (distance / fadeDistance) * 0.5;
+                opacity = Math.max(0.5, Math.min(1, opacity));
+                
+                el.style.opacity = opacity;
+            });
+        }
+
+        let ticking = false;
+        function requestFadeUpdate() {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateFadeOnScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestFadeUpdate);
+        updateFadeOnScroll();
+    </script>
+</body>
+</html>
