@@ -421,6 +421,44 @@
             line-height: 1.8;
         }
 
+        .video-container {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .video-container:hover {
+            box-shadow: 0 10px 30px var(--card-hover-shadow);
+        }
+
+        .video-container h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            color: var(--text-color);
+            font-weight: 400;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         a {
             color: var(--accent-color);
             text-decoration: none;
@@ -967,6 +1005,20 @@
                             <li>CRISPR-based genome engineering in plants, especially large-scale genome tweaking and its applications</li>
                             <li>I'm very excited and optimistic about the possibilities of AI-assisted engineering of biology and biological processes, especially synthesizing novel genomes and proteins!</li>
                         </ul>
+                        
+                        <div class="video-container">
+                            <h3>My research featured by Plasmidsaurus at PAG 33!</h3>
+                            <div class="video-wrapper">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/YUGAwdKQl4Q" 
+                                    title="Plasmidsaurus - Pratheek's Research" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
